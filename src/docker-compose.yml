@@ -1,5 +1,15 @@
 version: '3'
 services:
+  catalogapi:
+    build:
+      context: ..  
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile  
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - catalogdb
+
   catalogdb:
     image: postgres
     volumes:

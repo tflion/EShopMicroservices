@@ -14,8 +14,6 @@ public class BasketCheckoutEventHandler
 
         var command = MapToCreateOrderCommand(context.Message);
         await sender.Send(command);
-
-        throw new NotImplementedException();
     }
 
     private CreateOrderCommand MapToCreateOrderCommand(BasketCheckoutEvent message)

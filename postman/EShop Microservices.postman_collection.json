@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "7ca2b000-601d-4f5c-8e58-f2121b436083",
+		"name": "EShop Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41315239"
+	},
+	"item": [
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "GET Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products?pageNumber=2&pageSize=5",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "2"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{catalog_url}}/products/0194b461-ea55-4fec-8da6-8db863d6a46e"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ProductByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{catalog_url}}/products/category/Categoria E"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Product Test\",\r\n    \"category\": [\r\n        \"C2\"\r\n    ],\r\n    \"description\": \"Descrição do produto\",\r\n    \"imageFile\": \"Imagem do produto New\",\r\n    \"price\": 899\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{catalog_url}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"\",\r\n    \"name\": \"Novo produto C\",\r\n    \"category\": [\r\n        \"Categoria D\",\r\n        \"Categoria E\"\r\n    ],\r\n    \"description\": \"Descrição do produto C\",\r\n    \"imageFile\": \"Imagem do produto C\",\r\n    \"price\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{catalog_url}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{catalog_url}}/products/0194b461-ea55-4fec-8da6-8db863d6a46e"
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{catalog_url}}/health"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "GET BasketByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{basket_url}}/basket/Test"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Store Basket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Cart\": {\r\n        \"UserName\": \"test\",\r\n        \"Items\": [\r\n            {\r\n                \"Quantity\": 2,\r\n                \"Color\": \"Red\",\r\n                \"Price\": 500,\r\n                \"ProductId\": \"e7b0c093-bbfc-4f7c-b8ae-5a93d9b09845\",\r\n                \"ProductName\": \"IPhone X\"\r\n            },\r\n            {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Blue\",\r\n                \"Price\": 49.99,\r\n                \"ProductId\": \"ac1d5b8c-d89f-4e0b-908b-e6df9b803bc2\",\r\n                \"ProductName\": \"Jeans\"\r\n            },\r\n            {\r\n                \"Quantity\": 3,\r\n                \"Color\": \"Black\",\r\n                \"Price\": 9.99,\r\n                \"ProductId\": \"97cf9245-b3b8-4a9a-94f1-ec82f084d8f4\",\r\n                \"ProductName\": \"Socks\"\r\n            }\r\n        ],\r\n        \"TotalPrice\": 139.94\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{basket_url}}/basket"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BaskletByUsername",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{basket_url}}/basket/Test"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Checkout Basket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"BasketCheckoutDto\": {\r\n    \"UserName\": \"test\",\r\n    \"CustomerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n    \"TotalPrice\": 0,\r\n    \"FirstName\": \"John\",\r\n    \"LastName\": \"Doe\",\r\n    \"EmailAddress\": \"johndoe@example.com\",\r\n    \"AddressLine\": \"123 Main St\",\r\n    \"Country\": \"USA\",\r\n    \"State\": \"California\",\r\n    \"ZipCode\": \"48198\",\r\n    \"CardName\": \"John Doe\",\r\n    \"CardNumber\": \"485-3184\",\r\n    \"Expiration\": \"12/24\",\r\n    \"CVV\": \"123\",\r\n    \"PaymentMethod\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{basket_url}}/basket/checkout"
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordering",
+			"item": [
+				{
+					"name": "POST Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Order\": {\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"12345\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"João\",\r\n      \"LastName\": \"Silva\",\r\n      \"EmailAddress\": \"joao.silva@email.com\",\r\n      \"AddressLine\": \"Rua das Flores, 123\",\r\n      \"Country\": \"Brasil\",\r\n      \"State\": \"São Paulo\",\r\n      \"ZipCode\": \"41249\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"João\",\r\n      \"LastName\": \"Silva\",\r\n      \"EmailAddress\": \"joao.silva@email.com\",\r\n      \"AddressLine\": \"Rua das Flores, 123\",\r\n      \"Country\": \"Brasil\",\r\n      \"State\": \"São Paulo\",\r\n      \"ZipCode\": \"41248\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"João Silva\",\r\n      \"CardNumber\": \"4111111111111111\",\r\n      \"Expiration\": \"12/25\",\r\n      \"Cvv\": \"123\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 49.99\r\n      },\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 19.99\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{ordering_url}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Order\": {\r\n    \"Id\": \"4bf7e271-9697-4b20-924c-5f9905236866\",\r\n    \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n    \"OrderName\": \"54321\",\r\n    \"ShippingAddress\": {\r\n      \"FirstName\": \"João\",\r\n      \"LastName\": \"Silva\",\r\n      \"EmailAddress\": \"joao.silva@email.com\",\r\n      \"AddressLine\": \"Rua das Flores, 123\",\r\n      \"Country\": \"Brasil\",\r\n      \"State\": \"Belo Horizonte\",\r\n      \"ZipCode\": \"41249\"\r\n    },\r\n    \"BillingAddress\": {\r\n      \"FirstName\": \"João\",\r\n      \"LastName\": \"Silva\",\r\n      \"EmailAddress\": \"joao.silva@email.com\",\r\n      \"AddressLine\": \"Rua das Flores, 123\",\r\n      \"Country\": \"Brasil\",\r\n      \"State\": \"São Paulo\",\r\n      \"ZipCode\": \"41248\"\r\n    },\r\n    \"Payment\": {\r\n      \"CardName\": \"João Silva\",\r\n      \"CardNumber\": \"4111111111111111\",\r\n      \"Expiration\": \"12/25\",\r\n      \"Cvv\": \"123\",\r\n      \"PaymentMethod\": 1\r\n    },\r\n    \"Status\": 2,\r\n    \"OrderItems\": [\r\n      {\r\n        \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n        \"Quantity\": 2,\r\n        \"Price\": 49.99\r\n      },\r\n      {\r\n        \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n        \"Quantity\": 1,\r\n        \"Price\": 19.99\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{ordering_url}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Orders w/ Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders?PageIndex=0&PageSize=2",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET OrdersByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{ordering_url}}/orders/54321"
+					},
+					"response": []
+				},
+				{
+					"name": "GET OrdersByCustomer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{ordering_url}}/orders/customer/189dc8dc-990f-48e0-a37b-e6f2b60b9d7d"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{ordering_url}}/orders/4bf7e271-9697-4b20-924c-5f9905236866"
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{ordering_url}}/health"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "YarpApiGateway",
+			"item": [
+				{
+					"name": "Catalog",
+					"item": [
+						{
+							"name": "GET Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{yarp_url}}/catalog-service/products?pageNumber=1&pageSize=5",
+									"host": [
+										"{{yarp_url}}"
+									],
+									"path": [
+										"catalog-service",
+										"products"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Basket",
+					"item": [
+						{
+							"name": "POST Store Basket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Cart\": {\r\n        \"UserName\": \"test\",\r\n        \"Items\": [\r\n            {\r\n                \"Quantity\": 2,\r\n                \"Color\": \"Red\",\r\n                \"Price\": 500,\r\n                \"ProductId\": \"e7b0c093-bbfc-4f7c-b8ae-5a93d9b09845\",\r\n                \"ProductName\": \"IPhone X\"\r\n            },\r\n            {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Blue\",\r\n                \"Price\": 49.99,\r\n                \"ProductId\": \"ac1d5b8c-d89f-4e0b-908b-e6df9b803bc2\",\r\n                \"ProductName\": \"Jeans\"\r\n            },\r\n            {\r\n                \"Quantity\": 3,\r\n                \"Color\": \"Black\",\r\n                \"Price\": 9.99,\r\n                \"ProductId\": \"97cf9245-b3b8-4a9a-94f1-ec82f084d8f4\",\r\n                \"ProductName\": \"Socks\"\r\n            }\r\n        ],\r\n        \"TotalPrice\": 139.94\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{yarp_url}}/basket-service/basket"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ordering",
+					"item": [
+						{
+							"name": "GET Orders by Name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{yarp_url}}/ordering-service/orders/ORD_2"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

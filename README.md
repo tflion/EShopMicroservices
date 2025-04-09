@@ -40,7 +40,7 @@ Acesse os serviços via API Gateway com base nas rotas do YARP.
 Este projeto inclui uma collection pronta para facilitar o teste dos endpoints com o Postman.
 
 ✅ Como importar:
-Baixe o arquivo EShop Microservices.postman_collection.json incluído neste repositório.
+Baixe o arquivo [EShop Microservices.postman_collection.json](./postman/EShop%20Microservices.postman_collection.json) incluído neste repositório.
 
 Abra o Postman.
 
